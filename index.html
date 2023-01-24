@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta charset="utf-8" />
+        <title>Actual Seo Media's Rank Tracker</title>
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+ 
+        
+
+     
+
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600&display=swap" rel="stylesheet"/>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/nucleo-icons.css" rel="stylesheet" />
+  <link href="css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+
+
+
+    
+    </head>
+    
+    <body id="page-top">
+
+
+        <div  class="modal fade" id="Modalchart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style = "border-radius: 10px;">
+          <div class="modal-dialog modal-dialog-centered " style = "position: relative;  ">
+            <div class="modal-content bg-greygrey text-white" >
+             
+              
+
+            
+            </div>
+          </div>
+        </div>
+
+  
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Actual SEO Media Reports</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">SEO Graph Reports <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rank Tracker</a>
+            </li>
+            <!--li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li-->
+          </ul>
+        </div>
+      
+
+    <style>
+  .bg-darkgrey {
+  background-color: #333333  !important;
+}
+
+.btn-lightgrey {
+  background-color: #333333 !important;
+
+}
+   
+      .btn-greygrey {
+background-color: #222222  !important;
+}
+        .btn-uniblue {
+          background-color: rgba(76, 130, 251, 0.24) !important;
+        }
+
+        .btn-outline-retro {
+          color: #ffffff00;
+          border-color: #ffffff;
+        }
+
+    </style>
+  
+  </nav>  
+  
+        
+ 
+
+        <!-- Masthead-->
+        <header class="masthead ">
+
+          
+
+            <div class="container d-flex h-100 align-items-center  animate__animated animate__fadeInDown">
+                  <div class="mx-auto text-center text-black" style = "">
+                   
+                    <py-env>
+                      - matplotlib
+                      - numpy
+                      - pandas
+                      - paths:
+                          - server_RK.py
+                          - ABBA_TEST.csv
+                          
+                    </py-env>
+                    <div class="card text-center" style = "top:-150px">
+                      <div class="card-header">
+                        <p id = "FILE_NAME"  class="card-text">File Name</p>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-title" id= "FILE_DATA"  class="card-text">File Content.</p>
+                        <a id = "KEYWORD_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Keywords</a>
+                        <a id = "RP_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Ranking Pages</a> 
+                        <a id = "RANK_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Rank</a>
+                        <a id = "DIFFERENCE_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Difference</a> <a id = "PREVIOUS_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Previous</a> <a id = "NOTE_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Note</a> 
+                      </div>
+                      <div class="card-footer text-muted">
+                        <!--2 days ago-->
+                      </div>
+                    </div>
+                    <input type ="file" accept=".csv" class="btn text-white blur blur-rounded btn-greygrey" id = 'UPLOAD_CSV' style = "font-size: 15px; top: 10px; position: relative">
+                  </input>
+                  <py-script>
+import pandas as pd
+import numpy as np
+import server_RK as srk
+GHR = 'Google HOU Rank'
+KW = 'Keyword'
+VSBY = 'Visibility'
+GHD = 'Google HOU Difference'
+GP = 'Google Previous'
+GMHR = 'Google Mobile HOU Rank'
+KW = 'Keyword'
+VSBY = 'Visibility'
+GMHD = 'Google Mobile HOU Difference'
+GMP = 'Google Mobile HOU Previous'
+BNGR = 'Bing US Rank'
+KW = 'Keyword'
+VSBY = 'Visibility'
+BNGDF = "Bing US Difference"
+BNGP = 'Bing US Previous'
+YAHR = 'Yahoo! Rank'
+KW = 'Keyword'
+VSBY = 'Visibility'
+YAHDIF = "Yahoo! Difference"
+YAHP = 'Yahoo! Previous'
+SE = "SE"
+NOTE = "NOTE"
+GMHR = 'Google Mobile HOU Rank'
+GMHD = 'Google Mobile HOU Difference'
+RP = 'Ranking page(s)'
+REPORT_NAME = ['Google Report', 'Google Mobile Report', 'Bing Report', 'Yahoo! Report']
+FILE_DATA = Element("FILE_DATA")
+FILE_NAME = Element("FILE_NAME")
+
+frame_data = srk.FIND_FRAME("ABBA_TEST.csv")
+GOD = frame_data[0]
+GOD_NAME = REPORT_NAME[0]
+FILE_DATA.clear()
+FILE_NAME.clear()
+FILE_DATA.element.innerHTML = GOD
+FILE_NAME.element.innerHTML = GOD_NAME
+
+
+
+
+
+
+                  </py-script>
+                  </head>
+                  <body>
+               
+                  
+                      
+                  
+                  
+                  
+                    </body>
+                   
+                        
+                    
+                     
+                  
+                    <style>
+                      .btn-greygrey {
+          background-color: #222222  !important;
+        }
+                    </style>
+
+
+                  
+
+
+
+
+
+                </div>
+            </div>
+            
+        </header>
+
+
+        
+        <!-- About-->
+        
+
+        <!-- Footer-->
+
+      
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+
+
+
+</script>
+<script defer src="/firebase_RT.js"></script>
+
+        <!-- Bootstrap core JS-->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/utf8/3.0.0/utf8.js" integrity="sha512-TpkRcfygox9TaC40D5Nu9CQElI7PaQ9d+/RrhWccgvktjgh/HITPo+VZ+xQc98DZbiR3Ct/z9BHXAp/m88j/kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/utf8/3.0.0/utf8.min.js" integrity="sha512-Up/VFqLmUsS5GMd4XTuxE6NsCsBJlPv12A9apHDqRx8v/x+++Qmmg2M1kTs8cQztxHk0d/rgAqmVOjzEKBZH7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        
+        
+    </body>
+</html>
+

@@ -63,12 +63,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">SEO Graph Reports <span class="sr-only">(current)</span></a>
-            </li>
+          
             <li class="nav-item">
-              <a class="nav-link" href="#">Rank Tracker</a>
-            </li>
+              <input type ="file" id = "file" accept=".csv" class = "text-black "id = 'UPLOAD_CSV' >
+                  </input>
+              </li>
+
             <!--li class="nav-item">
               <a class="nav-link" href="#">Pricing</a>
             </li>
@@ -150,8 +150,13 @@ background-color: #222222  !important;
                       </div>
                       
                       <div class="card-body">
-                        <p class="card-title" id= "FILE_DATA"  class="card-text">File Content.</p>
-                        <table class="table table-bordered">
+                        <a id = "GOOGLE_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Google Serp</a>
+                        <a id = "GM_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Google Mobile Serp</a> 
+                        <a id = "BING_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Bing Serp</a>
+                        <a id = "YAHOO_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Yahoo Serp</a>
+                        
+                    
+                        <table class="table table-bordered" style = "position:relative; top:20px">
                           <thead>
                             <tr>
                               <th scope="col">#</th>
@@ -176,22 +181,18 @@ background-color: #222222  !important;
                             
                           </tbody>
                         </table>
-                        <a id = "GOOGLE_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Google Serp</a>
-                        <a id = "GM_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Google Mobile Serp</a> 
-                        <a id = "BING_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Bing Serp</a>
-                        <a id = "YAHOO_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Yahoo Serp</a>
-                        
+                      
                       </div>
                       <div class="card-footer text-muted">
                         <!--2 days ago-->
                       </div>
                     </div>
-                    <input type ="file" id = "file" accept=".csv" class="btn text-white blur blur-rounded btn-greygrey" id = 'UPLOAD_CSV' style = "font-size: 15px; top: 10px; position: relative">
-                  </input>
+                  
                   <py-script>
 import pandas as pd
 import numpy as np
 import server_RK as srk
+from pyodide import create_proxy
 GHR = 'Google HOU Rank'
 KW = 'Keyword'
 VSBY = 'Visibility'
@@ -226,8 +227,17 @@ GOD = frame_data[0]
 GOD_NAME = REPORT_NAME[0]
 FILE_DATA.clear()
 FILE_NAME.clear()
-FILE_DATA.element.innerHTML = GOD
-FILE_NAME.element.innerHTML = GOD_NAME
+#FILE_DATA.element.innerHTML = GOD
+#FILE_NAME.element.innerHTML = GOD_NAME
+for i in range(len(frame_data[0])):
+ CHILD = document.createElement("tr")
+ NEXT_CHILD = document.createElement("th")
+ CHILD_SCOPE = NEXT_CHILD.scope
+ CHILD_SCOPE = "row"
+ parent = document.querySelector("#ROWS")
+
+
+
 
 
 

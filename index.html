@@ -134,37 +134,46 @@ background-color: #222222  !important;
                     </py-env>
                     <div class="card text-center" style = "top:-150px">
                       <div class="card-header">
-                        <p id = "FILE_NAME"  class="card-text">File Name</p>
+                        <p id = "FILE_NAME"  class="card-text">File Name <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                       
+                          <div class="btn-group" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle text-black blur blur-rounded btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Menu
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                              <a class="dropdown-item" href="#">Graphs</a>
+                              <a class="dropdown-item" href="#">Summary</a>
+                            </div>
+                          </div>
+                        </div></p>
+                        
                       </div>
+                      
                       <div class="card-body">
                         <p class="card-title" id= "FILE_DATA"  class="card-text">File Content.</p>
-                        <table class="table table-bordered table-dark">
+                        <table class="table table-bordered">
                           <thead>
                             <tr>
                               <th scope="col">#</th>
-                              <th scope="col">First</th>
-                              <th scope="col">Last</th>
-                              <th scope="col">Handle</th>
+                              <th id = "keyword" scope="col">Keyword</th>
+                              <th id = "RK" scope="col">Ranking Pages</th>
+                              <th id = "Rank"scope="col">Rank</th>
+                              <th id = "Previous"scope="col">Previous</th>
+                              <th id = "Difference" scope="col">Difference</th>
+                              <th id = "NO_TE" scope="col">Note</th>
+
+
+
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr>
+                          <tbody id = "ROWS">
+                            <!--tr>
                               <th scope="row">1</th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Jacob</td>
-                              <td>Thornton</td>
-                              <td>@fat</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td colspan="2">Larry the Bird</td>
-                              <td>@twitter</td>
-                            </tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr-->
+                            
                           </tbody>
                         </table>
                         <a id = "GOOGLE_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Google Serp</a>

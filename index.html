@@ -12,7 +12,7 @@
         <title>Actual Seo Media's Rank Tracker</title>
   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
- 
+  <script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.2/lib/bundle.min.js"></script>
         
 
      
@@ -138,16 +138,46 @@ background-color: #222222  !important;
                       </div>
                       <div class="card-body">
                         <p class="card-title" id= "FILE_DATA"  class="card-text">File Content.</p>
-                        <a id = "KEYWORD_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Keywords</a>
-                        <a id = "RP_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Ranking Pages</a> 
-                        <a id = "RANK_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Rank</a>
-                        <a id = "DIFFERENCE_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Difference</a> <a id = "PREVIOUS_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Previous</a> <a id = "NOTE_DATA" href="#" class="btn text-black blur blur-rounded btn-light">Note</a> 
+                        <table class="table table-bordered table-dark">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">First</th>
+                              <th scope="col">Last</th>
+                              <th scope="col">Handle</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2</th>
+                              <td>Jacob</td>
+                              <td>Thornton</td>
+                              <td>@fat</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3</th>
+                              <td colspan="2">Larry the Bird</td>
+                              <td>@twitter</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <a id = "GOOGLE_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Google Serp</a>
+                        <a id = "GM_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Google Mobile Serp</a> 
+                        <a id = "BING_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Bing Serp</a>
+                        <a id = "YAHOO_SERP" href="#" class="btn text-black blur blur-rounded btn-light">Yahoo Serp</a>
+                        
                       </div>
                       <div class="card-footer text-muted">
                         <!--2 days ago-->
                       </div>
                     </div>
-                    <input type ="file" accept=".csv" class="btn text-white blur blur-rounded btn-greygrey" id = 'UPLOAD_CSV' style = "font-size: 15px; top: 10px; position: relative">
+                    <input type ="file" id = "file" accept=".csv" class="btn text-white blur blur-rounded btn-greygrey" id = 'UPLOAD_CSV' style = "font-size: 15px; top: 10px; position: relative">
                   </input>
                   <py-script>
 import pandas as pd
@@ -196,6 +226,18 @@ FILE_NAME.element.innerHTML = GOD_NAME
 
 
                   </py-script>
+                  <script>
+                    const inputFile = document.querySelector('input');
+
+                    inputFile.addEventListener("change", async () => {
+                        const csvFile = inputFile.files[0]
+                        dfd.readCSV(csvFile).then((df) => {
+                          var DATA_FILE = document.getElementById("FILE_DATA");
+                          DATA_FILE.innerHTML = df
+                        })
+                    })
+                     
+                </script>
                   </head>
                   <body>
                
